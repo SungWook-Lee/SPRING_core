@@ -8,22 +8,29 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.odrer.OrderService;
 import hello.core.odrer.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 //공연 기획자.
 public class AppConfig {
 
+    @Bean
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());//생성자 주입
     }
 
-    private MemoryMemberRepository memberRepository() {
+    @Bean
+    public MemoryMemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(memberRepository(), discountPolicy());//생성자 주입
     }
 
+    @Bean
     public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
