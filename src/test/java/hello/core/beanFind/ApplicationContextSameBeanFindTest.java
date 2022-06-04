@@ -1,6 +1,7 @@
 package hello.core.beanFind;
 
 import hello.core.AppConfig;
+import hello.core.discount.DiscountPolicy;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemoryMemberRepository;
@@ -26,7 +27,7 @@ public class ApplicationContextSameBeanFindTest {
     @Test
     @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면, 중복 오류 발생")
     void findBeanByTypeDuplicate(){
-        ac.getBean(MemberRepository.class);
+//        DiscountPolicy bean = ac.getBean(MemberRepository.class);
         assertThrows(NoUniqueBeanDefinitionException.class,
                 () -> ac.getBean(MemberRepository.class));
     }
