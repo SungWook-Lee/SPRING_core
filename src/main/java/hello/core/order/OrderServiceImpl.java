@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -17,7 +18,7 @@ public class OrderServiceImpl implements OrderService{
 
     //lombok @RequiredArgsConstructor 자동으로 생성해준다.
     @Autowired
-    public OrderServiceImpl(MemoryMemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemoryMemberRepository memberRepository,@MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
